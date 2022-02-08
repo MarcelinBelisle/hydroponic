@@ -15,7 +15,7 @@ const SerialPort = require('serialport');
 const ReadLine = SerialPort.parsers.Readline;
 
 const com3 = new SerialPort("com3", {
-  baudRate: 9600
+  baudRate: 115200
 });
 const parser = com3.pipe(new ReadLine({ delimiter: '\r\n' }));
 
