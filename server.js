@@ -26,7 +26,9 @@ parser.on('open', function () {
 
 parser.on('data', function (data) {
   console.log(data)
-  io.emit('data', data.toString());
+  io.emit('arduino:data', {
+    value: data.toString()
+  });
 });
 
 parser.on('error', (err) => console.log(err));

@@ -2,7 +2,7 @@
 const socket = io();
 
 
-socket.on('data', function (data) {
+socket.on('arduino:data', function (data) {
   console.log(data);
-  arduino.innerHTML +=data +"\n";
+  arduino.innerHTML +=data.value +"\n";
 });
