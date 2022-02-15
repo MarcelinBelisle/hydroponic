@@ -16,7 +16,7 @@ body {
 .sidenav {
   height: 100%;
   min-width: 100px;
-  max-width: 300px;
+  max-width: 240px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -29,25 +29,35 @@ body {
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 21px;
   color: #413f3f;
   display: block;
 }
 
-.main {
-  margin-left: 140px; /* Same as the width of the sidenav */
-  margin-right: 30px;
-  font-size: 18px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+
+.textbox {
+  margin-left: 265px; /* Same as the width of the sidenav */
+  color: white;
+  background-color: #2b383f;
+}
+div{
+  border: 1px solid gray;
+  padding: 8px;
   
-  background-color:rgb(116, 184, 196);
 }
 
-.sidenav a:hover {
+h1 {
   color: white;
 }
-
-
+p{
+ color: white;
+}
+.header {
+  width: 100%;
+  font-size: 18px; /* Increased text to enable scrolling */
+  color: white;
+  background-color:#212a2f;
+}
 
 
 @media screen and (max-height: 450px) {
@@ -55,43 +65,33 @@ body {
   .sidenav a {font-size: 18px;}
 }
 </style>
-
+<script src="socket.io/socket.io.js"></script>
+<script src="sketch.js"></script>
 
   <!-- Header -->
-  <header id="proprietes">
+  <header id="proprietes" class="header">
     <a href="#proprietes"></a>
-    
+
  
-  
-    <div class="main">
-        <h1 class="display-4 p-4">Hydroponic data</h1>
-      </div>
-        <div class="main">
-              <textarea name="text" cols="85" rows="30" id="arduino"></textarea>
-            </div>
-    
-      <script src="socket.io/socket.io.js"></script>
-      <script src="sketch.js"></script>
-   
-     
-  
-  </header>
-  <body class="main">
+  <body>
+
+    <div  class="textbox">
+      <h1 class="display-4 p-4">Hydroponic data</h1>
+          <textarea name="text" cols="85" rows="30" id="arduino"></textarea>
+        </div>
 
 <!-- Sidebar/menu -->
 <div class="sidenav" id="mySidebar">
   <div class="w3-container">
-    <a href="#" onclick="w3_close()" title="close menu">
-    </a>
-    	<img src="hydro.png" alt="Trulli" width="230" height="220"><br><br>
+    	<img src="hydro.png" alt="Trulli" width="190" height="190"><br><br>
   
    
   </div>
   <div class="w3-bar-block">
   
        <div class="w3-section w3-bottombar w3-padding-16">
-       <a href="humidifier.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> Humidifier</a>
-       <a href="ph.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> pH</a>
+       <a href="test.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> Humidifier</a>
+       <a href="fire.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> pH</a>
 	   <a href="tdsvalue.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i>   TDS value</a>
 	   
 	    </div>
@@ -118,6 +118,7 @@ function w3_close() {
 
 
 </body>
+</header>
 </html>
 
 
