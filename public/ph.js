@@ -1,5 +1,4 @@
 
-const socket = io();
   
 let counter = 0;
 socket.on('arduino:data', function (dataSerial) {

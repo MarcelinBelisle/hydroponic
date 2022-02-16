@@ -1,20 +1,19 @@
 
-const socket = io();
   
-let counter = 0;
+let counter2 = 0;
 socket.on('arduino:data', function (dataSerial) {
- myChart.data.labels.push(counter);
- myChart.data.datasets.forEach(dataset => {
+ myChart2.data.labels.push(counter);
+ myChart2.data.datasets.forEach(dataset => {
    dataset.data.push(dataSerial.value);
  });
  counter++;
- myChart.update();
+ myChart2.update();
 });
 
 Chart.defaults.font.size = 20;
 Chart.defaults.font.color = '#000';
-const ctx = document.getElementById('myChart2').getContext('2d');
-const myChart = new Chart(ctx, {
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const myChart2 = new Chart(ctx2, {
     type: 'line',
     data: {
         labels: ['TDS value'],

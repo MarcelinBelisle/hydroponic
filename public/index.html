@@ -1,125 +1,169 @@
 <!DOCTYPE html>
 <html>
   <title>Hydro closet</title>
-<meta name="viewport" content="width=1080, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <meta name="viewport" content="width=1080, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="socket.io/socket.io.js"></script>
 
 
 <style>
-body {
-  font-family: "Lato", sans-serif;
+h1{
+  text-align: center;
+}
+.main{
+margin-left: 270px;
+margin-right: 140px;
+margin-top: 50px;
+background-color: #1F282D;
+color: white;
+
 }
 .sidenav {
   height: 100%;
-  min-width: 100px;
-  max-width: 240px;
+ width: 240px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: white;
-  overflow-x: hidden;
+  background-color: #2b383f;
   padding-top: 20px;
 }
-
 .sidenav a {
-  padding: 6px 8px 6px 16px;
+  padding: 20px 8px 20px 20px;
+  text-decoration: none;
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  color: white;
+  display: block;
+ 
+}
+
+.sidenav a:hover {
+  background-color: rgb(136, 135, 135);
+  
+}
+.sidenavIn {
+  padding: 6px 8px 6px 20px;
   text-decoration: none;
   font-size: 21px;
   color: #413f3f;
   display: block;
 }
 
+  pre {margin:0px; padding-top:15px; font-family: "Lato", sans-serif;}
+  .block1 {
+    
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      border:1px solid;
+      border-color:#2b383f;
+      background-color: #2b383f;
+      margin:0;
+      margin-bottom: 30px;
+      padding:0;
 
-.textbox {
-  margin-left: 265px; /* Same as the width of the sidenav */
-  color: white;
-  background-color: #2b383f;
-}
-div{
-  border: 1px solid gray;
-  padding: 8px;
+  }
   
-}
+  .block2 {
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      border:1px solid;
+      border-color:#2b383f;
+      background-color: #2b383f;
+      margin:0;
+      margin-bottom: 30px;
+      padding:0;
+  }
+  
+  .block3 {
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      border:1px solid;
+      border-color:#2b383f;
+      background-color: #2b383f;
+      margin:0;
+      margin-bottom: 30px;
+      padding:0;
+  }
 
-h1 {
-  color: white;
-}
-p{
- color: white;
-}
-.header {
-  width: 100%;
-  font-size: 18px; /* Increased text to enable scrolling */
-  color: white;
-  background-color:#212a2f;
-}
-
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+  
+  .g-block-1 {
+      width: 49%;
+      height:100%;
+      float: left;
+      display:inline-block;
+      margin:0;
+      padding:0;
+  }
+  
+  .g-block-2 {
+      width: 49%;
+      float: right;
+      height:100%;
+      display:inline-block;
+      margin:0;
+      padding:0;
+  }
 </style>
-<script src="socket.io/socket.io.js"></script>
-<script src="sketch.js"></script>
-
-  <!-- Header -->
-  <header id="proprietes" class="header">
-    <a href="#proprietes"></a>
-
- 
-  <body>
-
-    <div  class="textbox">
-      <h1 class="display-4 p-4">Hydroponic data</h1>
-          <textarea name="text" cols="85" rows="30" id="arduino"></textarea>
-        </div>
-
-<!-- Sidebar/menu -->
-<div class="sidenav" id="mySidebar">
-  <div class="w3-container">
-    	<img src="hydro.png" alt="Trulli" width="190" height="190"><br><br>
+<body class="main">
+  <div class="sidenav">
+  <div class="sidenavIn">
+    <img src="hydro.png" width="190" height="190">
+  </div>
   
+      <div>
+      <a href="humidifier.html"> Humidifier</a>
+      <a href="ph.html"> pH</a>
+    <a href="tdsvalue.html">   TDS value</a>
+    
+     </div>
+     <div>
+   <a href="#header">Haut de page</a> 
+   <a href="#footer">Bas de page</a>
+     </div>
    
   </div>
-  <div class="w3-bar-block">
-  
-       <div class="w3-section w3-bottombar w3-padding-16">
-       <a href="test.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> Humidifier</a>
-       <a href="fire.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> pH</a>
-	   <a href="tdsvalue.html" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i>   TDS value</a>
-	   
-	    </div>
-		 
-    <a href="#proprietes" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Haut de page</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Bas de page</a>
-
-    </div>
-
-<script>
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-	
-	
-}
-</script>
-
-
+<div>
+  <div class="g-block-1">
+      <div class="block1">
+        <pre>
+        </pre>
+      </div> 
+      <div class="block2">
+        <pre>
+          <canvas id="myChart2"></canvas>
+        </pre>
+      </div>
+      <div class="block2">
+        <pre>
+          <canvas id="myChart1"></canvas>
+        </pre>
+      </div>
+  </div>
+  <div class="g-block-2">
+    <div class="block3">
+      <pre>
+        <h1 class="display-4 p-4">Hydroponic data</h1>
+        <textarea name="text" cols="85" rows="30" id="arduino"></textarea>
+      </pre>
+    </div> 
+      <div class="block3">
+        <pre>
+          <canvas id="myChart"></canvas>
+        </pre>
+      </div> 
+     
+  </div>
+</div>
 </body>
-</header>
+
+<script src="sketch.js"></script>
+<script src="firechartpH.js" type="module"></script>
+<script src="TDSvalue.js"></script>
+<script src="ph.js"></script>
+
+
 </html>
-
-
-   
