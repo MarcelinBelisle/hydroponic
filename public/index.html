@@ -5,7 +5,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="socket.io/socket.io.js"></script>
 
-
 <style>
 h1{
   text-align: center;
@@ -113,57 +112,49 @@ color: white;
   <div class="sidenavIn">
     <img src="hydro.png" width="190" height="190">
   </div>
-  
       <div>
       <a href="humidifier.html"> Humidifier</a>
       <a href="ph.html"> pH</a>
     <a href="tdsvalue.html">   TDS value</a>
-    
      </div>
      <div>
    <a href="#header">Haut de page</a> 
    <a href="#footer">Bas de page</a>
-     </div>
-   
+     </div>  
   </div>
-<div>
+
+
   <div class="g-block-1">
       <div class="block1">
-        <pre>
-        </pre>
-      </div> 
-      <div class="block2">
         <pre>
           <canvas id="myChart2"></canvas>
         </pre>
       </div>
-      <div class="block2">
+      <div class="block1">
         <pre>
           <canvas id="myChart1"></canvas>
         </pre>
       </div>
   </div>
+
+
   <div class="g-block-2">
-    <div class="block3">
+    <div class="block1">
       <pre>
         <h1 class="display-4 p-4">Hydroponic data</h1>
         <textarea name="text" cols="85" rows="30" id="arduino"></textarea>
       </pre>
     </div> 
-      <div class="block3">
+      <div class="block1">
         <pre>
           <canvas id="myChart"></canvas>
         </pre>
       </div> 
-     
   </div>
-</div>
 </body>
 
 <script src="sketch.js"></script>
 <script src="firechartpH.js" type="module"></script>
 <script src="TDSvalue.js"></script>
 <script src="ph.js"></script>
-
-
 </html>
