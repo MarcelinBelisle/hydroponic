@@ -1,13 +1,13 @@
 
 Chart.defaults.font.size = 20;
 Chart.defaults.font.color = '#000';
-const ctx = document.getElementById('myChartpH').getContext('2d');
+const ctx = document.getElementById('myChartTDS').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['pH value'],
+        labels: ['TDS value'],
         datasets: [{
-            label: 'pH value',
+            label: 'TDS value',
             data: [],
             fill: true,
             backgroundColor: 'rgb(120, 16, 126)',
@@ -60,9 +60,9 @@ let counter8 = 0;
     }
 
 
-    const dbRef = ref(db,"pHvalue");
+    const dbRef = ref(db,"TDSvalue");
     onValue(dbRef,(snapshot)=>{
-        var ph = snapshot.val().pH;
-        addData(myChart, ph);
+        var tds = snapshot.val().tds;
+        addData(myChart, tds);
     });
 
