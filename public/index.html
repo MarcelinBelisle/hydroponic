@@ -132,11 +132,17 @@ color: white;
 
   
   .g-block-left {
-      width: 70%;
+      width: 75%;
       height:100%;
       float: left;
       display:inline-block;
+  }
 
+  .g-block-small-left {
+      width: 37%;
+      height:100%;
+      float: left;
+      display:inline-block;
   }
   
   .g-block-right {
@@ -144,8 +150,16 @@ color: white;
       float: right;
       height:100%;
       display:inline-block;
-      margin-bottom: 20px;
   }
+
+  .g-block-small-right {
+      margin-left: 30px;
+      width: 36%;
+      height:100%;
+      display:inline-block;
+
+  }
+
 </style>
 <body class="main">
   <div class="sidenav">
@@ -173,6 +187,7 @@ color: white;
               <th>Seeds origin</th>
               <th>Starting date</th>
               <th>End date</th>
+              <th>Harvest(kg)</th>
               <th>Status</th>
             </tr>
             <tr>
@@ -182,15 +197,17 @@ color: white;
               <td>Random field crops in Yamaska</td>
               <td>Undefined</td>
               <td>Undefined</td>
-              <td style="background-color:rgb(16, 233, 16)">Ongoing</td>
+              <td>0.x</td>
+              <td style="background-color:green">Ongoing</td>
            </tr>
            <tr>
             <td>1</td>
-            <td>tomatoes</td>
+            <td>tomato</td>
             <td><i>fegerge</i></td>
             <td>ghg</td>
             <td>Undefined</td>
             <td>Undefined</td>
+            <td>0</td>
             <td style="background-color:blue">Incomming</td>
          </tr>
          <tr>
@@ -200,90 +217,15 @@ color: white;
           <td>lklklk</td>
           <td>(9/07/22)</td>
           <td>(31/10/22)</td>
+          <td>3</td>
           <td style="background-color:red">Finished</td>
        </tr>
         </table>      
       </pre>
     </div>
-
-    <div class="blockMats">
-         <table id="mat1">
-          <h1>Material List</h1>
-          <tr>
-            <th>humidity</th>
-            <th>temperature</th>
-            <th>Co2</th>
-            <th>light</th>
-            <th>Water pump</th>
-            <th>pH</th>
-            <th>PPM</th>
-            <th>Substrat</th>
-            <th>microcontroller</th>
-          </tr>
-           <tr>
-             <td>DHT11</td>
-             <td>DHT11</td>
-             <td>nothing yet</td>
-             <td>MAXSISUN MF1000</td>
-             <td>feew</td>
-             <td>few3few</td>
-             <td>few1few</td>
-             <td>few3few</td>
-             <td>arduino uno</td>
-          </tr>
-        </table>
-        <table id="mat2">
-          <tr>
-            <th>humidity</th>
-            <th>temperature</th>
-            <th>Co2</th>
-            <th>light</th>
-            <th>Water pump</th>
-            <th>pH</th>
-            <th>PPM</th>
-          </tr>
-        </table>   
-    </div>
-
-
-    <div class="blockSetting">
-            <table id="set1">
-              <h1>Setting</h1>
-              <tr>
-                <th>humidity</th>
-                <th>temperature</th>
-                <th>Co2</th>
-                <th>light time</th>
-                <th>light value</th>
-                <th>pH</th>
-                <th>PPM</th>
-              </tr>
-              <tr>
-                <td>35</td>
-                <td>25C</td>
-                <td>no data yet</td>
-                <td>7am to 9pm</td>
-                <td>no data yet</td>
-                <td>6</td>
-                <td>600</td>
-             </tr>
-            </table>
-            <table id="set2">
-              <tr>
-                <th>humidity</th>
-                <th>temperature</th>
-                <th>Co2</th>
-                <th>light time</th>
-                <th>light value</th>
-                <th>pH</th>
-                <th>PPM</th>
-              </tr>
-            </table>      
-    </div>
   </div>
 
-  
-  <div class="g-block-right">
+  <div class="g-block-small-left">
     <div class="blockSetting">
           <h1>choose a plant</h1>
           <select name="select" id="select" onchange="changeSelection()"><!--Added the onchange Function -->
@@ -298,6 +240,138 @@ color: white;
    
   </div>
 </div>
+
+
+  <div class="g-block-small-right">
+    <div class="blockMats">
+         <table id="mat1">
+          <h1>Components List</h1>
+          <tr>
+            <th>Component</th>
+            <th>Model</th>
+          </tr>
+           <tr>
+             <td>Humidity</td>
+             <td>DHT11</td>
+           </tr>
+           <tr>
+             <td>Temperature</td>
+             <td>DHT11</td>
+            </tr>
+            <tr>
+              <td>Light</td>
+              <td>MAXSISUN MF1000</td>
+             </tr>
+             <tr>
+              <td>Microcontroller</td>
+              <td>Arduino uno</td>
+             </tr>
+             <tr>
+              <td>Water pump</td>
+              <td>grege</td>
+             </tr>
+             <tr>
+              <td>Peristaltic pump</td>
+              <td>4x 12v xx</td>
+             </tr>
+        </table>
+        <table id="mat2">
+          <tr>
+            <th>humidity</th>
+            <th>temperature</th>
+            <th>Co2</th>
+            <th>light</th>
+            <th>Water pump</th>
+            <th>pH</th>
+            <th>PPM</th>
+          </tr>
+        </table>   
+    </div>
+  </div>
+
+  <div class="g-block-left">
+    <div class="blockSetting">
+            <table id="set1">
+              <h1>Growing condition</h1>
+              <tr>
+                
+                <th>growing stage</th>
+                <th>start stage</th>
+                <th>end stage</th>
+                <th>Indoor/Outdoor</th>
+                <th>Small decription</th>
+                <th>humidity</th>
+                <th>temperature</th>
+                <th>Co2</th>
+                <th>light time</th>
+                <th>light PPFD</th>
+                <th>light DLI</th>
+                <th>pH</th>
+                <th>PPM</th>
+              </tr>
+              <tr>
+                <td>Leaf</td>
+                <td>(dd/mm/yyyy)</td>
+                <td>(dd/mm/yyyy)</td>
+                <td>Indoor</td>
+                <td>In a closet</td>
+                <td>35</td>
+                <td>25C</td>
+                <td>no data yet</td>
+                <td>7am to 9pm</td>
+                <td>no data yet</td>
+                <td>no data yet</td>
+                <td>6</td>
+                <td>600</td>
+             </tr>
+             <tr>
+              <td>Flower</td>
+              <td>(dd/mm/yyyy)</td>
+              <td>(dd/mm/yyyy)</td>
+              <td>Indoor</td>
+              <td>In a closet</td>
+              <td>35</td>
+              <td>25C</td>
+              <td>no data yet</td>
+              <td>7am to 9pm</td>
+              <td>no data yet</td>
+              <td>no data yet</td>
+              <td>6</td>
+              <td>600</td>
+           </tr>
+              <tr>
+                <td>Fruit</td>
+                <td>(dd/mm/yyyy)</td>
+                <td>(dd/mm/yyyy)</td>
+                <td>Indoor</td>
+                <td>In a closet</td>
+                <td>35</td>
+                <td>25C</td>
+                <td>no data yet</td>
+                <td>7am to 9pm</td>
+                <td>no data yet</td>
+                <td>no data yet</td>
+                <td>6</td>
+                <td>600</td>
+             </tr>
+            </table>
+            <table id="set2">
+              <tr>
+                <th>growing stage</th>
+                <th>start stage</th>
+                <th>end stage</th>
+                <th>humidity</th>
+                <th>temperature</th>
+                <th>Co2</th>
+                <th>light time</th>
+                <th>light value</th>
+                <th>pH</th>
+                <th>PPM</th>
+              </tr>
+            </table>      
+    </div>
+  </div>
+
 
 </body>
 <script>
