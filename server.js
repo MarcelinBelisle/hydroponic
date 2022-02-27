@@ -14,8 +14,8 @@ server.listen(3000, () => console.log('server on port 3000'));
 const SerialPort = require('serialport');
 const ReadLine = SerialPort.parsers.Readline;
 
-const com3 = new SerialPort("com3", {
-  baudRate: 115200
+const com3 = new SerialPort("com6", {
+  baudRate: 9600
 });
 const parser = com3.pipe(new ReadLine({ delimiter: '\r\n' }));
 
