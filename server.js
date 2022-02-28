@@ -29,6 +29,20 @@ parser.on('data', function (data) {
   io.emit('arduino:data', {
     value: data.toString()
   });
+  if ( data.charAt(0) == 'n' ) {
+    io.emit('arduino:dataPH', {
+      value: data.toString()
+    });
+  }
+  else if ( data.charAt(0) == 'w' ) {
+    io.emit('arduino:dataTDS', {
+      value: data.toString()
+    });
+  }
+  else{
+    console.log("ripperony")
+  }
+
 });
 
 parser.on('error', (err) => console.log(err));

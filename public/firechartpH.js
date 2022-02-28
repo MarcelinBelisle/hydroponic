@@ -7,7 +7,7 @@
     const myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['pH value'],
+            labels: ['pH'],
             datasets: [{
                 label: 'pH value',
                 data: [],
@@ -55,16 +55,16 @@ const db = getFirestore();
 
 let counter = 0;
 
-socket.on('arduino:data', function (dataSerial) {
+socket.on('arduino:dataPH', function (dataSerial) {
 myChart.data.labels.push(counter);
 myChart.data.datasets.forEach((dataset) => {
-    dataset.data.push(dataSerial.value);
+    dataset.data.push(dataSerial.value.substring(1));
 
     var ref = doc(db,"pHvalue", "pH");
 
     updateDoc(
        ref, {
-           pH: arrayUnion(dataSerial.value)
+           pH: arrayUnion(dataSerial.value.substring(1))
         }
        );
     
