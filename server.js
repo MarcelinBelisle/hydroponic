@@ -29,20 +29,27 @@ parser.on('data', function (data) {
   io.emit('arduino:data', {
     value: data.toString()
   });
-  if ( data.charAt(0) == 'n' ) {
+  if ( data.charAt(0) == 'p' ) {
     io.emit('arduino:dataPH', {
       value: data.toString()
     });
   }
-  else if ( data.charAt(0) == 'w' ) {
+  else if ( data.charAt(0) == 'n' ) {
     io.emit('arduino:dataTDS', {
       value: data.toString()
     });
   }
-  else{
-    console.log("ripperony")
+  else if ( data.charAt(0) == 't' ) {
+    io.emit('arduino:dataTemp', {
+      value: data.toString()
+    });
   }
-
+  else if ( data.charAt(0) == 'h' ) {
+    io.emit('arduino:dataHum', {
+      value: data.toString()
+    });
+  }
+  
 });
 
 parser.on('error', (err) => console.log(err));

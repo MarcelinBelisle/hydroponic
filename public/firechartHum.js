@@ -1,8 +1,7 @@
 
 
         const socket = io();
-        
-
+                
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
 
@@ -27,15 +26,15 @@
 
     let counter = 0;
 
-    socket.on('arduino:dataPH', function (dataSerial) {
+    socket.on('arduino:dataHum', function (dataSerial) {
     myChart.data.labels.push(counter);
     myChart.data.datasets.forEach((dataset) => {
         dataset.data.push(dataSerial.value.substring(1));
-        var ref = doc(db,"pHvalue", "pH");
+        var ref = doc(db,"Humvalue", "Hum");
 
         updateDoc(
         ref, {
-            pH: arrayUnion(dataSerial.value.substring(1))
+            Hum: arrayUnion(dataSerial.value.substring(1))
             }
         );
     });
@@ -46,14 +45,14 @@
 
     Chart.defaults.font.size = 20;
     Chart.defaults.font.color = '#000';
-    const ctx = document.getElementById('myChartpH').getContext('2d');
+    const ctx = document.getElementById('myChartHum').getContext('2d');
 
     const myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['pH'],
+            labels: ['Humidity'],
             datasets: [{
-                label: 'pH value',
+                label: 'Humidity',
                 data: dataArray,
                 fill: true,
                 backgroundColor: 'rgb(120, 16, 126)',
