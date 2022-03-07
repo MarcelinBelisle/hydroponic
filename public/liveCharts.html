@@ -111,7 +111,7 @@ color: white;
 <body class="main">
   <div class="sidenav">
   <div class="sidenavIn">
-    <img src="hydro.png" width="190" height="190">
+    <img src="photo/hydro.png" width="190" height="190">
   </div>
       <div>
       <a href="index.html"> Information</a>
@@ -139,6 +139,11 @@ color: white;
         <canvas id="myChartTemp"></canvas>
       </pre>
     </div>
+    <div class="block1">
+      <pre>
+        <canvas id="myChartCO2"></canvas>
+      </pre>
+    </div>  
   </div>
 
 
@@ -153,14 +158,21 @@ color: white;
     <pre>
       <canvas id="myChartHum"></canvas>
     </pre>
-  </div>  
+  </div> 
+  <div class="block1">
+    <pre>
+      <canvas id="myChartWater"></canvas>
+    </pre>
+  </div>   
   </div>
 </body>
 
 
-<script src="sketch.js"></script>
-<script src="firechartpH.js" type="module"></script>
-<script src="firechartTDS.js" type="module"></script>
-<script src="firechartTemp.js" type="module"></script>
-<script src="firechartHum.js" type="module"></script>
+<script src="graph/sketch.js"></script>
+<script src="graph/firechartpH.js" type="module"></script>
+<script src="graph/firechartTDS.js" type="module"></script>
+<script src="graph/firechartTemp.js" type="module"></script>
+<script src="graph/firechartHum.js" type="module"></script>
+<script src="graph/firechartWater.js" type="module"></script>
+<script src="graph/firechartCO2.js" type="module"></script>
 </html>

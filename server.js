@@ -49,6 +49,16 @@ parser.on('data', function (data) {
       value: data.toString()
     });
   }
+  else if ( data.charAt(0) == 'c' ) {
+    io.emit('arduino:dataCO2', {
+      value: data.toString()
+    });
+  }
+  else if ( data.charAt(0) == 'w' ) {
+    io.emit('arduino:dataWater', {
+      value: data.toString()
+    });
+  }
   
 });
 
