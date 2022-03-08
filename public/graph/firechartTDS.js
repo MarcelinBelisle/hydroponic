@@ -73,4 +73,3 @@ counter++;
 myChart.update();
 });
 
-window.onload = updateDoc;
