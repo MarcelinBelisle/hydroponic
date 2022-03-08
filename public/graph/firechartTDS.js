@@ -72,3 +72,5 @@ myChart.data.datasets.forEach((dataset) => {
 counter++;
 myChart.update();
 });
+
+window.onload = updateDoc;

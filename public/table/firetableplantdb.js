@@ -22,9 +22,7 @@
 
     var EndDate = document.getElementById('EndDate');
     var NameCommon = document.getElementById('NameCommon');
-    let td1 = document.createElement("td");
-
-    td1.innerHTML=NameCommon;
+ 
  
     async function GetDoctument() {
         var ref = doc(db,"plantData", "BorlottiBean");

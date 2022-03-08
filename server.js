@@ -14,10 +14,10 @@ server.listen(3000, () => console.log('server on port 3000'));
 const SerialPort = require('serialport');
 const ReadLine = SerialPort.parsers.Readline;
 
-const com3 = new SerialPort("com6", {
+const com6 = new SerialPort("com6", {
   baudRate: 9600
 });
-const parser = com3.pipe(new ReadLine({ delimiter: '\r\n' }));
+const parser = com6.pipe(new ReadLine({ delimiter: '\r\n' }));
 
 parser.on('open', function () {
   console.log('connection is opened');
@@ -63,4 +63,4 @@ parser.on('data', function (data) {
 });
 
 parser.on('error', (err) => console.log(err));
-com3.on('error', (err) => console.log(err));
+com6.on('error', (err) => console.log(err));
