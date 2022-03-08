@@ -62,12 +62,6 @@ myChart.data.datasets.forEach((dataset) => {
 
     var ref = doc(db,"pHvalue", "pH");
 
-     getDoc(
-         ref, {
-            pH: pH.value
-         }
-        );
-
     updateDoc(
        ref, {
            pH: arrayUnion(dataSerial.value.substring(1))

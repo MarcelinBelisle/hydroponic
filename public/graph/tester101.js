@@ -1,4 +1,5 @@
 
+var dataArray = [];
 Chart.defaults.font.size = 20;
 Chart.defaults.font.color = '#000';
 const ctx = document.getElementById('myChartTester101').getContext('2d');
@@ -8,7 +9,7 @@ const myChart = new Chart(ctx, {
         labels: ['TDS value'],
         datasets: [{
             label: 'TDS value',
-            data: [],
+            data: dataArray,
             fill: true,
             backgroundColor: 'rgb(120, 16, 126)',
             borderWidth: 1,
@@ -42,26 +43,49 @@ const firebaseConfig = {
   appId: "1:419523459894:web:7b6d55c5af770e182f1197"
 };
 
+
 const app = initializeApp(firebaseConfig);
+import {getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField, arrayUnion}
+from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
 
-import {getDatabase, ref, get, set, child, update, remove, onValue}
-from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+const db = getFirestore();
 
-const db = getDatabase();
 
-let counter8 = 0;
- function addData(chart, data) {
-    chart.data.labels.push(counter8);
+var tds;
+let counter = 0;
+
+ function addData(chart, dataArray) {
+    chart.data.labels.push(counter);
     chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
+        dataset.data.push(dataArray);
+        console.log(tds);    
+        console.log(dataArray); 
     });
-    counter8++;
+    counter++;
     chart.update();
     }
 
+    async function GetDocument() {
+    var ref = doc(db,"TDSvalue", "PPM");
+    const docSnap = await getDoc(ref);
 
+     if(docSnap.exists()){
+        tds = docSnap.data().PPM;
+        for (let i = 0; i < tds.length; i++) {
+          addData(myChart, tds[i]); 
+        }
+
+     }
+}
+    window.onload = GetDocument;
+    
+
+
+
+    /*
     const dbRef = ref(db,"TDSvalue");
     onValue(dbRef,(snapshot)=>{
         var tds = snapshot.val().tds;
         addData(myChart, tds);
     });
+*/
