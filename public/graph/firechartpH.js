@@ -1,5 +1,5 @@
 
-const socket = io();
+
 var dataArray = [];
 Chart.defaults.font.size = 20;
 Chart.defaults.font.color = '#000';
@@ -76,26 +76,6 @@ let counter = 0;
 
      }
 }
-
-
-
-socket.on('arduino:dataPH', function (dataSerial) {
-    myChart.data.labels.push(counter);
-    myChart.data.datasets.forEach((dataset) => {
-    dataset.data.push(dataSerial.value.substring(1));
-
-    var ref = doc(db,"pHvalue", "pH");
-
-    updateDoc(
-       ref, {
-           pH: arrayUnion(dataSerial.value.substring(1))
-        }
-       );
-    
-});
-counter++;
-myChart.update();
-});
 
 
     window.onload = GetPH();
