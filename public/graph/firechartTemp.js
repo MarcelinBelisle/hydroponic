@@ -67,12 +67,17 @@ let counter = 0;
     async function GetTemp() {
     var ref = doc(db,"Tempvalue", "Temp");
     const docSnap = await getDoc(ref);
+    var bob = 0;
 
      if(docSnap.exists()){
         temp = docSnap.data().Temp;
         for (let i = 0; i < temp.length; i++) {
+          bob += parseFloat(temp[i]); 
           addData(myChart, temp[i]); 
         }
+        console.log(bob);
+        var avg = bob / temp.length;
+        console.log(avg);
 
      }
 }
