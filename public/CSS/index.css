@@ -125,7 +125,7 @@ select {
 
   .blockInfo table{
     border-collapse: collapse;
-    max-width: 96%;
+    max-width: 90%;
     width: 96%;
     margin-left: 2%;
     margin-bottom: 2%;
@@ -169,6 +169,7 @@ select {
     .blockComp table{
       border-collapse: collapse;
       margin-left: 16%;
+      margin-right: 16%;
       margin-bottom: 5%;
       color: white;
       font-family: "Lato", sans-serif;
