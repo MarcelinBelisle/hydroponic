@@ -1,6 +1,6 @@
 
 
-var thGrow = document.getElementById('GrowBorlotti');
+var thGrow = document.getElementById('growThBorlotti');
 
 function AddItemToTable1(){
 
@@ -56,7 +56,7 @@ function AddItemToTable1(){
    
 
 
-var tbody = document.getElementById('tbodyBorlotti');
+var tdGrow = document.getElementById('growTdBorlotti');
 
 function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperature,co2,lTime,PPFD,DLI,ph,nutrient){
 
@@ -108,11 +108,11 @@ function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperatu
     trow.appendChild(td13);
     
     
-    tbody.appendChild(trow);
+    tdGrow.appendChild(trow);
     }
 
     function AddAllItemsToTable(ThePlant){
-        tbody.innerHTML="";
+        tdGrow.innerHTML="";
         ThePlant.forEach(element => {
             AddItemToTable(element.GrowingStage, element.StartStage, element.EndStage, element.InOut, element.Desc, element.Humidity,
               element.Temperature, element.Co2, element.LightTime, element.LightPPFD, element.LightDLI, element.pH, element.Nutrient);

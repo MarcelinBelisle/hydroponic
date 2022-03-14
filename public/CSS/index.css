@@ -9,8 +9,8 @@ select {
     padding: 6px;
     font-size: 20px;
     font-family: "Lato", sans-serif;
-    margin-bottom: 20px;
-    margin-left: 20px;
+    margin-bottom: 5%;
+    margin-left: 20%;
     color: rgb(64, 123, 131);
     background-color: #f39c12;
     background-image: none;
@@ -25,8 +25,8 @@ select {
   .select {
     position: relative;
     display: flex;
-    width: 67%;
-    height: 65px;
+    width: 80%;
+    height: 69px;
     border-radius: .25em;
     overflow: hidden;
   }
@@ -34,8 +34,8 @@ select {
   .select::after {
     content: '\25BC';
     position: absolute;
-    width: 20px;
-    height: 13px;
+    width: 3%;
+    height: 19%;
     top: 0;
     right: 0;
     padding: 1em;
@@ -56,16 +56,6 @@ select {
     color: white;
   }
   
-  
-  table {
-    border-collapse: collapse;
-    width: 96%;
-    margin-left: 2%;
-    margin-bottom: 1.5%;
-    color: white;
-    font-family: "Lato", sans-serif;
-  }
-  
   tr:hover{
     background-color: #516d7c;
   }
@@ -82,15 +72,7 @@ select {
     border: 1px solid #000000;
     color: rgb(0, 0, 0);
   }
-  
-  
-  .blockImg {
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  
-  
+
   .main{
   background-color: #1F282D; 
   font-family: "Lato", sans-serif;
@@ -129,8 +111,6 @@ select {
     display: block;
   }
   
-
-
     .blockInfo {
       border-radius: 5px;
       width: 66%;
@@ -141,6 +121,15 @@ select {
       margin-bottom: 2%;
       margin-left: 14%;
       margin-top: 2.5%;
+  }
+
+  .blockInfo table{
+    border-collapse: collapse;
+    width: 96%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    color: white;
+    font-family: "Lato", sans-serif;
   }
 
   .blockMid{
@@ -157,6 +146,13 @@ select {
       margin-left: 14%;
     }
 
+    .blockSelect img{
+      margin-left: 16%;
+      margin-bottom: 5%;
+      width: 64%; 
+      height: 400px;
+    }
+
     .blockComp {
       flex: 1;
       border-radius: 5px;
@@ -168,6 +164,15 @@ select {
       margin-right: 20%;
       margin-left: 2%;
     }
+
+    .blockComp table{
+      border-collapse: collapse;
+      width: 96%;
+      margin-left: 16%;
+      margin-bottom: 5%;
+      color: white;
+      font-family: "Lato", sans-serif;
+    }
   
     .blockGrow {
         border-radius: 5px;
@@ -178,6 +183,15 @@ select {
         background-color: #2b383f;
         margin-bottom: 2%;
         margin-left: 14%;
+    }
+
+    .blockGrow table{
+      border-collapse: collapse;
+      width: 96%;
+      margin-left: 2%;
+      margin-bottom: 2%;
+      color: white;
+      font-family: "Lato", sans-serif;
     }
   
 

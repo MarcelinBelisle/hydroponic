@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <title>Hydro closet</title>
+  <meta name="viewport" content="width=1080, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
   <head>
     <link rel="stylesheet" href="CSS/index.css">
+    <link rel="icon" href="photo/hydro.png" type="image/png">
   </head>
 
 <body class="main">
@@ -19,7 +21,7 @@
      </div>  
   </div>
 
-    <div class="blockInfo">
+    <div class="blockInfo" id="header">
         <table>
          <h1>Plant Database</h1>
             <tr>
@@ -75,45 +77,19 @@
             <option value="2">test</option>
         </select>
       </div>
-      <div class="blockImg">
-        <img id="img1" src="photo/borlotti.png" width="68%" height="40%">
-        <img id="img2" src="photo/hydro.png" width="40%" height="40%">
-      </div>
+     
+        <img id="img1" src="photo/borlotti.png">
+        <img id="img2" src="photo/hydro.png">
+   
     </div>
 
     
     <div class="blockComp">
-         <table id="comp1">
-          <h1>Components List</h1>
-          <tr>
-            <th>Component</th>
-            <th>Model</th>
-          </tr>
-           <tr>
-             <td>Humidity</td>
-             <td>DHT11</td>
-           </tr>
-           <tr>
-             <td>Temperature</td>
-             <td>DHT11</td>
-            </tr>
-            <tr>
-              <td>Light</td>
-              <td>MAXSISUN MF1000</td>
-             </tr>
-             <tr>
-              <td>Microcontroller</td>
-              <td>Arduino uno</td>
-             </tr>
-             <tr>
-              <td>Water pump</td>
-              <td>grege</td>
-             </tr>
-             <tr>
-              <td>Peristaltic pump</td>
-              <td>4x 12v xx</td>
-             </tr>
-        </table>
+      <table id="comp1">
+        <h1>Components list</h1>
+          <tbody id="compThBorlotti"></tbody>
+           <tbody id="compTdBorlotti"></tbody>
+         </table>
         <table id="comp2">
           <tr>
             <th>humidity</th>
@@ -128,11 +104,11 @@
     </div>
     </div>
 
-    <div class="blockGrow">
+    <div class="blockGrow" id="footer">
             <table id="grow1">
               <h1>Growing condition</h1>
-                <tbody id="GrowBorlotti"></tbody>
-                 <tbody id="tbodyBorlotti"></tbody>
+                <tbody id="growThBorlotti"></tbody>
+                 <tbody id="growTdBorlotti"></tbody>
                </table>
             <table id="grow2">
               <tr>
@@ -149,9 +125,8 @@
               </tr>
             </table> 
           </div>
-
-
 </body>
-<script src="table/firetableBorlotti.js" type="module"></script>
+<script src="table/growBorlotti.js" type="module"></script>
+<script src="table/compBorlotti.js" type="module"></script>
 <script src="table/selectOnChange.js"></script>
 </html>
