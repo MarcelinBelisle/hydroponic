@@ -125,9 +125,8 @@ select {
 
   .blockInfo table{
     border-collapse: collapse;
-    max-width: 90%;
-    width: 96%;
     margin-left: 2%;
+    margin-right: 2%;
     margin-bottom: 2%;
     color: white;
     font-family: "Lato", sans-serif;
@@ -173,7 +172,6 @@ select {
       margin-bottom: 5%;
       color: white;
       font-family: "Lato", sans-serif;
-      max-width: 96%;
     }
   
     .blockGrow {
@@ -190,10 +188,10 @@ select {
     .blockGrow table{
       border-collapse: collapse;
       margin-left: 2%;
+      margin-right: 2%;
       margin-bottom: 2%;
       color: white;
       font-family: "Lato", sans-serif;
-      max-width: 96%;
     }
   
 
