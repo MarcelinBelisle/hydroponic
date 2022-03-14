@@ -1,6 +1,6 @@
 
 
-var tbody1 = document.getElementById('settingth');
+var thGrow = document.getElementById('GrowBorlotti');
 
 function AddItemToTable1(){
 
@@ -26,14 +26,14 @@ function AddItemToTable1(){
     th3.innerHTML="End stage";
     th4.innerHTML="Indoor/Outdoor";
     th5.innerHTML="Small description";
-    th6.innerHTML="Humidity";
-    th7.innerHTML="Temperature";
-    th8.innerHTML="Co2";
+    th6.innerHTML="Humidity avg";
+    th7.innerHTML="Temperature avg";
+    th8.innerHTML="Co2 avg";
     th9.innerHTML="Light time";
     th10.innerHTML="Light PPFD";
     th11.innerHTML="Light DLI";
-    th12.innerHTML="pH";
-    th13.innerHTML="PPM";
+    th12.innerHTML="pH avg";
+    th13.innerHTML="Nutrient avg";
 
     trow.appendChild(th1);
     trow.appendChild(th2);
@@ -50,15 +50,15 @@ function AddItemToTable1(){
     trow.appendChild(th13);
 
 
-    tbody1.appendChild(trow);
+    thGrow.appendChild(trow);
     }
 
    
 
 
-var tbody = document.getElementById('tbody2');
+var tbody = document.getElementById('tbodyBorlotti');
 
-function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperature,co2,lTime,PPFD,DLI,ph,PPM){
+function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperature,co2,lTime,PPFD,DLI,ph,nutrient){
 
     let trow = document.createElement("tr");
     let td1 = document.createElement("td");
@@ -88,7 +88,7 @@ function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperatu
     td10.innerHTML=PPFD;
     td11.innerHTML=DLI;
     td12.innerHTML=ph;
-    td13.innerHTML=PPM;
+    td13.innerHTML=nutrient;
 
 
   
@@ -115,7 +115,7 @@ function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperatu
         tbody.innerHTML="";
         ThePlant.forEach(element => {
             AddItemToTable(element.GrowingStage, element.StartStage, element.EndStage, element.InOut, element.Desc, element.Humidity,
-              element.Temperature, element.Co2, element.LightTime, element.LightPPFD, element.LightDLI, element.pH, element.PPM);
+              element.Temperature, element.Co2, element.LightTime, element.LightPPFD, element.LightDLI, element.pH, element.Nutrient);
         });
     }    
   
@@ -139,26 +139,52 @@ function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperatu
     const db = getFirestore();
 
     var temp;
+    var hum;
     async function GetDocument() {
         const dbRef = collection(db,"GrowBorlottiBean");
 
-        var ref = doc(db,"Tempvalue", "Temp");
-        const docSnap = await getDoc(ref);
-        var bob = 0;
+        var refTemp = doc(db,"Tempvalue", "Temp");
+        var refHum = doc(db,"Humvalue", "Hum");
+        const docSnapTemp = await getDoc(refTemp);
+        const docSnapHum = await getDoc(refHum);
+        var totalTemp = 0;
+        var totalHum = 0;
     
-         if(docSnap.exists()){
-            temp = docSnap.data().Temp;
+         if(docSnapTemp.exists()){
+            temp = docSnapTemp.data().Temp;
             for (let i = 0; i < temp.length; i++) {
-              bob += parseFloat(temp[i]); 
+              totalTemp += parseFloat(temp[i]); 
             }
-            console.log(bob);
-            var avg = bob / temp.length;
-            console.log(avg);
+            var avgTemp = totalTemp / temp.length;
          }
-       
-        onSnapshot(dbRef,(querySnapshot) => {
-          var plants = [];
+         if(docSnapHum.exists()){
+          hum = docSnapHum.data().Hum;
+          for (let i = 0; i < hum.length; i++) {
+            totalHum += parseFloat(hum[i]); 
+          }
+          var avgHum = totalHum / hum.length;
+       }
+         var refFlower = doc(db,"GrowBorlottiBean", "1Leaf");
+         const docRef = await setDoc(
+           refFlower, {
+            GrowingStage: "Leaf",
+            StartStage: "hnfgh",
+            EndStage: "hfdehd",
+            InOut: "nfdbdf",
+            Desc: "kjkkj",
+            Humidity: avgHum +"(%RH)",
+            Temperature: avgTemp+"(°C)",
+            Co2: "avgCo2",
+            LightTime: "hfh",
+            LightPPFD: "hfh",
+            LightDLI: "hfh",
+            pH: "avgPH",
+            Nutrient: "avgPPM"
+           }
+         )
 
+        onSnapshot(dbRef,(querySnapshot) => {
+           var plants = [];
 
           querySnapshot.forEach(doc => {
             plants.push(doc.data());
