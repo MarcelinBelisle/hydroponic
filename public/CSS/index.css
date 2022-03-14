@@ -60,8 +60,8 @@ select {
   table {
     border-collapse: collapse;
     width: 96%;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-left: 2%;
+    margin-bottom: 1.5%;
     color: white;
     font-family: "Lato", sans-serif;
   }
@@ -98,17 +98,17 @@ select {
 
   .sidenav {
     height: 100%;
-    width: 240px;
+    width: 12.5%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #2b383f;
-    padding-top: 20px;
+    padding-top: 2%;
   }
   
   .sidenav a {
-    padding: 20px 8px 20px 20px;
+    padding: 8% 10% 10% 16%;
     text-decoration: none;
     font-size: 24px;
     font-family: "Lato", sans-serif;
@@ -118,11 +118,11 @@ select {
   }
   
   .sidenav a:hover {
-    background-color: rgb(136, 135, 135);
+    background-color: #516d7c;
     
   }
   .sidenavIn {
-    padding: 6px 8px 6px 20px;
+    padding: 2% 10% 10% 10%;
     text-decoration: none;
     font-size: 21px;
     color: #413f3f;
