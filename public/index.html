@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <title>Hydro closet</title>
+  <meta name="viewport" content="width=1080, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
   <head>
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="icon" href="photo/hydro.png" type="image/png">
@@ -23,26 +24,8 @@
     <div class="blockInfo" id="header">
         <table>
          <h1>Plant Database</h1>
-            <tr>
-              <th>Number of plant</th>
-              <th>Common name</th>
-              <th>Plant name</th>
-              <th>Seeds origin</th>
-              <th>Starting date</th>
-              <th>End date</th>
-              <th>Harvest(kg)</th>
-              <th>Status</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Borlotti bean</td>
-              <td><i>Phaseolus vulgaris</i></td>
-              <td>Random field crops in Yamaska</td>
-              <td>Undefined</td>
-              <td>Undefined</td>
-              <td>0.x</td>
-              <td style="background-color:green">Ongoing</td>
-           </tr>
+         <tbody id="infoTh"></tbody>
+         <tbody id="infoTd"></tbody>
            <tr>
             <td>1</td>
             <td>tomato</td>
@@ -123,7 +106,8 @@
             </table> 
           </div>
 </body>
-<script src="table/growBorlotti.js" type="module"></script>
-<script src="table/compBorlotti.js" type="module"></script>
+<script src="table/fireTableBorlotti.js" type="module"></script>
+<script src="table/fireTableInfoTh.js"></script>
+<script src="table/fireTableInfoTd.js" type="module"></script>
 <script src="table/selectOnChange.js"></script>
 </html>

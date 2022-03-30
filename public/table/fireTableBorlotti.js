@@ -1,8 +1,90 @@
 
+var thComp = document.getElementById('compThBorlotti');
+
+function AddItemToTableCompTh(){
+
+    let trow = document.createElement("tr");
+    let th1 = document.createElement("th");
+    let th2 = document.createElement("th");
+
+    th1.innerHTML="Component";
+    th2.innerHTML="Model";
+
+    trow.appendChild(th1);
+    trow.appendChild(th2);
+
+    thComp.appendChild(trow);
+    }
+
+var tdComp = document.getElementById('compTdBorlotti');
+
+function AddItemToTableCompTd(comp,model){
+
+    let trow = document.createElement("tr");
+    let td1 = document.createElement("td");
+    let td2 = document.createElement("td");
+
+    td1.innerHTML=comp;
+    td2.innerHTML=model;
+ 
+    trow.appendChild(td1);
+    trow.appendChild(td2);
+
+    tdComp.appendChild(trow);
+    }
+
+    function AddAllItemsToTableCompTd(TheComponent){
+        tdComp.innerHTML="";
+        TheComponent.forEach(element => {
+            AddItemToTableCompTd(element.Component, element.Model);
+        });
+    }    
+  
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAScT_b2jdH7OV-jChxxIYmuIOtxOL0Tcs",
+      authDomain: "hydro-closet.firebaseapp.com",
+      databaseURL: "https://hydro-closet-default-rtdb.firebaseio.com",
+      projectId: "hydro-closet",
+      storageBucket: "hydro-closet.appspot.com",
+      messagingSenderId: "419523459894",
+      appId: "1:419523459894:web:dc18461c2637b7cb2f1197"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    import {getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField, arrayUnion, onSnapshot}
+    from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
+    
+    const db = getFirestore();
+
+
+    async function GetDocumentComp() {
+        const dbRef = collection(db,"CompBorlottiBean");
+
+         var refComp = doc(db,"CompBorlottiBean", "Peristaltic");
+         const docRef = await setDoc(
+           refComp, {
+            Component: "Peristaltic pump",
+            Model: "4x 12V INTLLAB 5 ~ 100 ml/min"
+           }
+         )
+
+        onSnapshot(dbRef,(querySnapshot) => {
+           var components = [];
+
+          querySnapshot.forEach(doc => {
+            components.push(doc.data());
+          });
+          AddAllItemsToTableCompTd(components);
+        })
+    }
+
 
 var thGrow = document.getElementById('growThBorlotti');
 
-function AddItemToTable1(){
+function AddItemToTableGrowTh(){
 
 
     let trow = document.createElement("tr");
@@ -53,12 +135,10 @@ function AddItemToTable1(){
     thGrow.appendChild(trow);
     }
 
-   
-
 
 var tdGrow = document.getElementById('growTdBorlotti');
 
-function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperature,co2,lTime,PPFD,DLI,ph,nutrient){
+function AddItemToTableGrowTd(gStage,startStage,endStage,inOut,desc,humidity,temperature,co2,lTime,PPFD,DLI,ph,nutrient){
 
     let trow = document.createElement("tr");
     let td1 = document.createElement("td");
@@ -111,36 +191,18 @@ function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperatu
     tdGrow.appendChild(trow);
     }
 
-    function AddAllItemsToTable(ThePlant){
+    function AddAllItemsToTableGrowTd(TheGrow){
         tdGrow.innerHTML="";
-        ThePlant.forEach(element => {
-            AddItemToTable(element.GrowingStage, element.StartStage, element.EndStage, element.InOut, element.Desc, element.Humidity,
+        TheGrow.forEach(element => {
+            AddItemToTableGrowTd(element.GrowingStage, element.StartStage, element.EndStage, element.InOut, element.Desc, element.Humidity,
               element.Temperature, element.Co2, element.LightTime, element.LightPPFD, element.LightDLI, element.pH, element.Nutrient);
         });
     }    
   
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAScT_b2jdH7OV-jChxxIYmuIOtxOL0Tcs",
-      authDomain: "hydro-closet.firebaseapp.com",
-      databaseURL: "https://hydro-closet-default-rtdb.firebaseio.com",
-      projectId: "hydro-closet",
-      storageBucket: "hydro-closet.appspot.com",
-      messagingSenderId: "419523459894",
-      appId: "1:419523459894:web:dc18461c2637b7cb2f1197"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    import {getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField, arrayUnion, onSnapshot}
-    from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
-    
-    const db = getFirestore();
-
     var temp;
     var hum;
-    async function GetDocument() {
+    async function GetDocumentGrow() {
         const dbRef = collection(db,"GrowBorlottiBean");
 
         var refTemp = doc(db,"Tempvalue", "Temp");
@@ -184,15 +246,17 @@ function AddItemToTable(gStage,startStage,endStage,inOut,desc,humidity,temperatu
          )
 
         onSnapshot(dbRef,(querySnapshot) => {
-           var plants = [];
+           var grows = [];
 
           querySnapshot.forEach(doc => {
-            plants.push(doc.data());
+            grows.push(doc.data());
           });
-          AddAllItemsToTable(plants);
+          AddAllItemsToTableGrowTd(grows);
         })
     }
 
-    window.onload = AddItemToTable1();
-    window.onload = GetDocument();
+    window.onload = AddItemToTableCompTh();
+    window.onload = GetDocumentComp();
+    window.onload = AddItemToTableGrowTh();
+    window.onload = GetDocumentGrow();
    

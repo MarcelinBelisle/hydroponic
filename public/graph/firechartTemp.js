@@ -1,16 +1,14 @@
 
 
-var dataArray = [];
-Chart.defaults.font.size = 20;
-Chart.defaults.font.color = '#000';
-const ctx = document.getElementById('myChartTemp').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'line',
+var dataArray2 = [];
+const ctx2 = document.getElementById('myChartTempMean').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+    type: 'bar',
     data: {
-        labels: ['Temp'],
+        labels: [],
         datasets: [{
-            label: 'Temperature',
-            data: dataArray,
+            label: 'Temperature Mean',
+            data: dataArray2,
             fill: true,
             backgroundColor: 'rgb(120, 16, 126)',
             borderWidth: 1,
@@ -21,16 +19,58 @@ const myChart = new Chart(ctx, {
 
         }]
     },
-    options: {            
-            scales: {
-                y: {
-                  beginAtZero: true,
-                    }
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'yellow',
+          anchor: 'center'
+        }
+      },  
+    scales: {
+        y: {
+          beginAtZero: true,
+          }
+        }
+      }
+});
 
-            }
-        },
-    });
+var dataArray = [];
+const ctx = document.getElementById('myChartTemp').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Temperature',
+            data: dataArray,
+            fill: true,
+            backgroundColor: 'rgb(120, 16, 126, 0.2)',
+            borderWidth: 3,
+            borderColor: 'rgb(120, 16, 126)',
+            pointStyle: 'circle',
+            pointRadius: 0,
+            pointBackgroundColor: "yellow",
+            pointBorderColor: "yellow"
 
+        }]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'yellow',
+          anchor: 'end'
+        }
+      },  
+    scales: {
+        y: {
+            suggestedMin: 0,
+            suggestedMax: 40,
+          }
+        }
+      }
+});
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
 
@@ -64,23 +104,47 @@ let counter = 0;
     chart.update();
     }
 
+     function addDataMean(chart2, label, dataArray2) {
+        chart2.data.labels.push(label);
+        chart2.data.datasets.forEach((dataset) => {
+            dataset.data.push(dataArray2);
+        });
+        chart2.update();
+        }
+    
+
     async function GetTemp() {
     var ref = doc(db,"Tempvalue", "Temp");
     const docSnap = await getDoc(ref);
-    var bob = 0;
+    var total = 0;
+    var median = 0;
 
      if(docSnap.exists()){
         temp = docSnap.data().Temp;
         for (let i = 0; i < temp.length; i++) {
-          bob += parseFloat(temp[i]); 
+          total += parseFloat(temp[i]); 
           addData(myChart, temp[i]); 
         }
-        console.log(bob);
-        var avg = bob / temp.length;
-        console.log(avg);
-
+    
+        var half = temp.length / 2;
+        if (temp.length % 2 == 0){
+          median = temp[(half-1)];
+        }
+        else{
+          var half1 = parseInt(half - 0.5);
+          var half2 = parseInt(half - 1.5);
+           median = Number(temp[half1]) + Number(temp[half2]) / 2.0;
+         }
+        console.log(temp.length);
+        console.log(temp[half-1]);
+        console.log(half-1);
+        console.log(median);
+        var avg = total / temp.length;
+        addDataMean(myChart2,'mean', avg); 
+        addDataMean(myChart2, 'median', median); 
      }
 }
+                        
 
 
     window.onload = GetTemp();

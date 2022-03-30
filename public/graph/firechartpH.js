@@ -1,35 +1,73 @@
-
-
-var dataArray = [];
-Chart.defaults.font.size = 20;
-Chart.defaults.font.color = '#000';
-const ctx = document.getElementById('myChartpH').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'line',
+var dataArray2 = [];
+const ctx2 = document.getElementById('myChartpHMean').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+    type: 'bar',
     data: {
-        labels: ['pH'],
+        labels: [],
         datasets: [{
-            label: 'pH value',
-            data: dataArray,
+            label: 'pH Mean',
+            data: dataArray2,
             fill: true,
-            backgroundColor: 'rgb(120, 16, 126)',
+            backgroundColor: 'rgb(255, 255, 0)',
             borderWidth: 1,
       pointStyle: 'circle',
       pointRadius: 5,
-      pointBackgroundColor: "yellow",
+      pointBackgroundColor: "black",
       pointBorderColor: 'rgb(0, 0, 0)'
 
         }]
     },
-    options: {            
-            scales: {
-                y: {
-                  beginAtZero: true,
-                    }
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'black',
+          anchor: 'center'
+        }
+      },  
+    scales: {
+        y: {
+          beginAtZero: true,
+          }
+        }
+      }
+});
 
-            }
-        },
-    });
+var dataArray = [];
+const ctx = document.getElementById('myChartpH').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'pH value',
+            data: dataArray,
+            fill: true,
+            backgroundColor: 'rgb(255, 255, 0, 0.2)',
+            borderWidth: 3,
+            borderColor: 'rgb(255, 255, 0)',
+            pointStyle: 'circle',
+            pointRadius: 0,
+            pointBackgroundColor: "black",
+            pointBorderColor: "black"
+        }]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'black',
+          anchor: 'end'
+        }
+      },  
+    scales: {
+        y: {
+            suggestedMin: 0,
+            suggestedMax: 14,
+          }
+        }
+      }
+});
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
@@ -64,16 +102,39 @@ let counter = 0;
     chart.update();
     }
 
+    function addDataMean(chart2, label, dataArray2) {
+      chart2.data.labels.push(label);
+      chart2.data.datasets.forEach((dataset) => {
+          dataset.data.push(dataArray2);
+      });
+      chart2.update();
+      }   
+
     async function GetPH() {
     var ref = doc(db,"pHvalue", "pH");
     const docSnap = await getDoc(ref);
+    var total = 0;
+    var median = 0;
 
      if(docSnap.exists()){
         ph = docSnap.data().pH;
         for (let i = 0; i < ph.length; i++) {
+          total += parseFloat(ph[i]); 
           addData(myChart, ph[i]); 
         }
 
+        var half = ph.length / 2;
+        if (ph.length % 2 == 0){
+          median = ph[(half-1)];
+        }
+        else{
+         var half1 = parseInt(half - 0.5);
+         var half2 = parseInt(half - 1.5);
+          median = Number(ph[half1]) + Number(ph[half2]) / 2.0;
+        }
+        var avg = total / (ph.length * 1.00);
+        addDataMean(myChart2,'mean', avg); 
+        addDataMean(myChart2, 'median', median); 
      }
 }
 

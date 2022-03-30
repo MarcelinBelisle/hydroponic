@@ -2,7 +2,8 @@
 <html>
   <title>Hydro closet</title>
   <meta name="viewport" content="width=1080, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
   <script src="socket.io/socket.io.js"></script>
 
   <head>
@@ -11,70 +12,60 @@
   </head>
 
 <body class="main">
-  <div class="sidenav">
-  <div class="sidenavIn">
-    <img src="photo/hydro.png" width="190" height="190">
-  </div>
-      <div>
-      <a href="index.html"> Information</a>
-     </div>
-     <div>
-   <a href="#header">Haut de page</a> 
-   <a href="#footer">Bas de page</a>
-     </div>  
+  
+  <div class="blockHead">
+    <button style="background-color: rgb(255, 255, 0)" onclick="clickSelectionChartpH()">pH</button>
+    <button style="background-color: rgb(0, 128, 0)" onclick="clickSelectionChartTDS()">PPM</button>
+    <button style="background-color: rgb(255, 255, 255);" onclick="clickSelectionChartCO2()">CO2</button>
+    <button style="background-color: rgb(0, 0, 255)" onclick="clickSelectionChartWater()">Water</button>
+    <button style="background-color: rgb(173, 216, 230)" onclick="clickSelectionChartHum()">Humidity</button>
+    <button style="background-color: rgb(120, 16, 126)" onclick="clickSelectionChartTemp()">Temperature</button>
   </div>
 
-
-  <div class="g-block-1">
-      <div class="block1">
-        <pre>
-          <canvas id="myChartTDS"></canvas>
-        </pre>
-      </div>
-      <div class="block1">
-        <pre>
-          <canvas id="myChartpH"></canvas>
-        </pre>
-      </div>
-      <div class="block1">
-      <pre>
-        <canvas id="myChartTemp"></canvas>
-      </pre>
-    </div>
-    <div class="block1">
-      <pre>
-        <canvas id="myChartCO2"></canvas>
-      </pre>
-    </div>  
+  <div class="blockNav">
+  yo
   </div>
-
-
-  <div class="g-block-2">
-    <div class="blockSerial">
-      <pre>
-        <h1 class="display-4 p-4">Hydroponic data</h1>
-        <textarea name="text" cols="40" rows="30" id="arduino"></textarea>
-      </pre>
-    </div>
-    <div class="block1">
-    <pre>
-      <canvas id="myChartHum"></canvas>
-    </pre>
-  </div> 
-  <div class="block1">
-    <pre>
+  
+  <div class="blockMainGraph">
+      <canvas id="myChartpH"></canvas>
+      <canvas id="myChartTDS"></canvas>
+      <canvas id="myChartCO2"></canvas>
       <canvas id="myChartWater"></canvas>
-    </pre>
+      <canvas id="myChartHum"></canvas>
+      <canvas id="myChartTemp"></canvas>
+  </div>  
+
+  <div class="blockFirstRight">
+    <textarea class="textArduino" name="text" cols="55" rows="22" id="arduino"></textarea>
   </div>
-  </div>        
+
+  <div class="blockThirdRight">
+    <canvas id="myChartpHMean"></canvas>
+    <canvas id="myChartTDSMean"></canvas>
+    <canvas id="myChartCO2Mean"></canvas>
+    <canvas id="myChartWaterMean"></canvas>
+    <canvas id="myChartHumMean"></canvas>
+    <canvas id="myChartTempMean"></canvas>
+  </div>
+
+  <div class="blockBottomLeft">
+    optimal value :
+    <h4>40</h4>
+  </div>
+
+  
+  <div class="blockBottomRight">
+    y7 gd
+  </div>
+
 </body>
 
-
-<script src="graph/sketch.js"></script>
 <script src="graph/firechartpH.js" type="module"></script>
 <script src="graph/firechartTDS.js" type="module"></script>
-<script src="graph/firechartTemp.js" type="module"></script>
 <script src="graph/firechartHum.js" type="module"></script>
-<script src="graph/firechartWater.js" type="module"></script>
 <script src="graph/firechartCO2.js" type="module"></script>
+<script src="graph/firechartWater.js" type="module"></script>
+<script src="graph/firechartTemp.js" type="module"></script>
+<script src="table/btnOnClickChart.js"></script>
 </html>
+

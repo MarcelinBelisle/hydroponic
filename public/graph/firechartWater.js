@@ -1,18 +1,15 @@
 
-
-var dataArray = [];
-Chart.defaults.font.size = 20;
-Chart.defaults.font.color = '#000';
-const ctx = document.getElementById('myChartWater').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'line',
+var dataArray2 = [];
+const ctx2 = document.getElementById('myChartWaterMean').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+    type: 'bar',
     data: {
-        labels: ['Liters'],
+        labels: [],
         datasets: [{
-            label: 'WaterConsumption',
-            data: dataArray,
+            label: 'Water Mean',
+            data: dataArray2,
             fill: true,
-            backgroundColor: 'rgb(120, 16, 126)',
+            backgroundColor: 'rgb(0, 0, 255)',
             borderWidth: 1,
       pointStyle: 'circle',
       pointRadius: 5,
@@ -21,15 +18,57 @@ const myChart = new Chart(ctx, {
 
         }]
     },
-    options: {            
-            scales: {
-                y: {
-                  beginAtZero: true,
-                    }
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'yellow',
+          anchor: 'center'
+        }
+      },  
+    scales: {
+        y: {
+          beginAtZero: true,
+          }
+        }
+      }
+});
 
-            }
-        },
-    });
+var dataArray = [];
+const ctx = document.getElementById('myChartWater').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'WaterConsumption',
+            data: dataArray,
+            fill: true,
+            backgroundColor: 'rgb(0, 0, 255, 0.2)',
+            borderWidth: 3,
+            borderColor: 'rgb(0, 0, 255)',
+            pointStyle: 'circle',
+            pointRadius: 0,
+            pointBackgroundColor: "yellow",
+            pointBorderColor: "yellow"
+
+        }]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'yellow',
+          anchor: 'end'
+        }
+      },  
+    scales: {
+        y: {
+           beginAtZero: true,
+          }
+        }
+      }
+});
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
@@ -65,16 +104,38 @@ let counter = 0;
     chart.update();
     }
 
+    function addDataMean(chart2, label, dataArray2) {
+      chart2.data.labels.push(label);
+      chart2.data.datasets.forEach((dataset) => {
+          dataset.data.push(dataArray2);
+      });
+      chart2.update();
+      }   
+
     async function GetWater() {
     var ref = doc(db,"WaterConsumption", "Liters");
     const docSnap = await getDoc(ref);
+    var total = 0;
+    var median = 0;
 
      if(docSnap.exists()){
         liters = docSnap.data().Liters;
         for (let i = 0; i < liters.length; i++) {
+          total += parseFloat(liters[i]); 
           addData(myChart, liters[i]); 
         }
-
+        var half = liters.length / 2;
+        if (liters.length % 2 == 0){
+          median = liters[(half-1)];
+        }
+        else{
+         var half1 = parseInt(half - 0.5);
+         var half2 = parseInt(half - 1.5);
+          median = Number(liters[half1]) + Number(liters[half2]) / 2.0;
+        }
+        var avg = total / (liters.length * 1.00);
+        addDataMean(myChart2,'mean', avg); 
+        addDataMean(myChart2, 'median', median); 
      }
 }
 

@@ -35,10 +35,10 @@ select {
     content: '\25BC';
     position: absolute;
     width: 3%;
-    height: 19%;
+    height: 15%;
     top: 0;
     right: 0;
-    padding: 1em;
+    padding: 3.5%;
     background-color: #34495e;
     transition: .50s all ease;
     pointer-events: none;
