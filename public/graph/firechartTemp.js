@@ -248,10 +248,7 @@ let counter = 0;
           var half2 = parseInt(half - 1.5);
            median = Number(temp[half1]) + Number(temp[half2]) / 2.0;
          }
-        console.log(temp.length);
-        console.log(temp[half-1]);
-        console.log(half-1);
-        console.log(median);
+
         var avg = total / temp.length;
         var avgRound = (Math.round(avg * 100) / 100).toFixed(2);
         var medianRound = (Math.round(median * 100) / 100).toFixed(2);

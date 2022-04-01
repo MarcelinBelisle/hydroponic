@@ -170,8 +170,7 @@ from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
 
 const db = getFirestore();
 
-var yoyo = Timestamp;
-console.log(yoyo);
+
 
 var co2;
 let counter = 0;
