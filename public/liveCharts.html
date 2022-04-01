@@ -14,17 +14,21 @@
 <body class="main">
   
   <div class="blockHead">
-    <button style="background-color: rgb(255, 255, 0)" onclick="clickSelectionChartpH()">pH</button>
-    <button style="background-color: rgb(0, 128, 0)" onclick="clickSelectionChartTDS()">PPM</button>
-    <button style="background-color: rgb(255, 255, 255);" onclick="clickSelectionChartCO2()">CO2</button>
-    <button style="background-color: rgb(0, 0, 255)" onclick="clickSelectionChartWater()">Water</button>
-    <button style="background-color: rgb(173, 216, 230)" onclick="clickSelectionChartHum()">Humidity</button>
-    <button style="background-color: rgb(120, 16, 126)" onclick="clickSelectionChartTemp()">Temperature</button>
+    <button style="margin-left: 15%;" onclick="clickSelectionChartpH()">pH</button>
+    <button onclick="clickSelectionChartTDS()">PPM</button>
+    <button onclick="clickSelectionChartCO2()">CO2</button>
+    <button onclick="clickSelectionChartWater()">Water</button>
+    <button onclick="clickSelectionChartHum()">Humidity</button>
+    <button onclick="clickSelectionChartTemp()">Temperature</button>
   </div>
 
   <div class="blockNav">
     <div>
-    <a href="index.html"> Info</a>
+    <img src="photo/hydro.png">
+  </div>
+    <div>
+    <a href="index.html">Tables</a>
+    <a>Info</a>
   </div>
   </div>
   
@@ -38,26 +42,38 @@
   </div>  
 
   <div class="blockFirstRight">
-    <textarea class="textArduino" name="text" cols="55" rows="22" id="arduino"></textarea>
+    <h1>Arduino Serial monitor</h1>
+    <textarea class="textArduino" name="text" cols="55" rows="19" id="arduino"></textarea>
   </div>
 
-  <div class="blockThirdRight">
-    <canvas id="myChartpHMean"></canvas>
+  <div class="blockSecRight">
+  </div>
+
+  <div class="blockBottomLeft">
+    <canvas id="myChartHumDif"></canvas>
+    <canvas id="myChartHumPercent" style="position: relative; margin-left: 55%;"></canvas>
+
+    <canvas id="myChartCO2Dif"></canvas>
+    <canvas id="myChartCO2Percent" style="position: relative; margin-left: 55%;"></canvas>
+
+    <canvas id="myChartTDSDif"></canvas>
+    <canvas id="myChartTDSPercent" style="position: relative; margin-left: 55%;"></canvas>
+
+    <canvas id="myChartTempDif"></canvas>
+    <canvas id="myChartTempPercent" style="position: relative; margin-left: 55%;"></canvas>
+
+    <canvas id="myChartWaterDif"></canvas>
+    <canvas id="myChartWaterPercent" style="position: relative; margin-left: 55%;"></canvas>
+  </div>
+
+  
+  <div class="blockBottomRight">
+    <canvas id="myChartpHMean" ></canvas>
     <canvas id="myChartTDSMean"></canvas>
     <canvas id="myChartCO2Mean"></canvas>
     <canvas id="myChartWaterMean"></canvas>
     <canvas id="myChartHumMean"></canvas>
     <canvas id="myChartTempMean"></canvas>
-  </div>
-
-  <div class="blockBottomLeft">
-    optimal value :
-    <h4>40</h4>
-  </div>
-
-  
-  <div class="blockBottomRight">
-    y7 gd
   </div>
 
 </body>
@@ -68,6 +84,7 @@
 <script src="graph/firechartCO2.js" type="module"></script>
 <script src="graph/firechartWater.js" type="module"></script>
 <script src="graph/firechartTemp.js" type="module"></script>
-<script src="table/btnOnClickChart.js"></script>
+<script src="fireSerial.js" type="module"></script>
+<script src="action/btnOnClickChart.js"></script>
 </html>
 

@@ -10,8 +10,6 @@ const myChart2 = new Chart(ctx2, {
             fill: true,
             backgroundColor: 'rgb(255, 255, 0)',
             borderWidth: 1,
-      pointStyle: 'circle',
-      pointRadius: 5,
       pointBackgroundColor: "black",
       pointBorderColor: 'rgb(0, 0, 0)'
 
@@ -132,9 +130,12 @@ let counter = 0;
          var half2 = parseInt(half - 1.5);
           median = Number(ph[half1]) + Number(ph[half2]) / 2.0;
         }
-        var avg = total / (ph.length * 1.00);
-        addDataMean(myChart2,'mean', avg); 
-        addDataMean(myChart2, 'median', median); 
+      
+        var avg = total / (ph.length);
+        var avgRound = (Math.round(avg * 100) / 100).toFixed(2);
+        var medianRound = (Math.round(median * 100) / 100).toFixed(2);
+        addDataMean(myChart2,'mean', avgRound); 
+        addDataMean(myChart2, 'median', medianRound); 
      }
 }
 

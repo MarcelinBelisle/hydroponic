@@ -10,14 +10,16 @@
 <body class="main">
   <div class="sidenav">
   <div class="sidenavIn">
-    <img src="photo/hydro.png" width="100%" height="100%">
+    <img id="nav0" src="photo/hydro.png" width="100%" height="100%">
+    <img id="nav1" src="photo/borlotti.png" width="100%" height="100%">
+    <img id="nav2" src="photo/hydro.png" width="100%" height="100%">
   </div>
       <div>
       <a href="liveCharts.html"> Live charts</a>
      </div>
      <div>
-   <a href="#header">Haut de page</a> 
-   <a href="#footer">Bas de page</a>
+   <a href="#header">Top page</a> 
+   <a href="#footer">Bottom page</a>
      </div>  
   </div>
 
@@ -26,26 +28,6 @@
          <h1>Plant Database</h1>
          <tbody id="infoTh"></tbody>
          <tbody id="infoTd"></tbody>
-           <tr>
-            <td>1</td>
-            <td>tomato</td>
-            <td><i>fegerge</i></td>
-            <td>ghg</td>
-            <td>Undefined</td>
-            <td>Undefined</td>
-            <td>0</td>
-            <td style="background-color:blue">Incomming</td>
-         </tr>
-         <tr>
-          <td>1</td>
-          <td>exemple</td>
-          <td><i>gfegedg</i></td>
-          <td>lklklk</td>
-          <td>(9/07/22)</td>
-          <td>(31/10/22)</td>
-          <td>3</td>
-          <td style="background-color:red">Finished</td>
-       </tr>
         </table>      
     </div>
 
@@ -56,7 +38,7 @@
           <select id="select" onchange="changeSelection()">
             <option value="0">Please Select a plant</option>
             <option value="1">Borlotti bean</option>
-            <option value="2">test</option>
+            <option value="2">Tomato + 4x lettuce</option>
         </select>
       </div>
         <img id="img1" src="photo/borlotti.png">
@@ -71,15 +53,8 @@
            <tbody id="compTdBorlotti"></tbody>
          </table>
         <table id="comp2">
-          <tr>
-            <th>humidity</th>
-            <th>temperature</th>
-            <th>Co2</th>
-            <th>light</th>
-            <th>Water pump</th>
-            <th>pH</th>
-            <th>PPM</th>
-          </tr>
+          <tbody id="compThTomato"></tbody>
+          <tbody id="compTdTomato"></tbody>
         </table>   
     </div>
     </div>
@@ -91,23 +66,14 @@
                  <tbody id="growTdBorlotti"></tbody>
                </table>
             <table id="grow2">
-              <tr>
-                <th>growing stage</th>
-                <th>start stage</th>
-                <th>end stage</th>
-                <th>humidity</th>
-                <th>temperature</th>
-                <th>Co2</th>
-                <th>light time</th>
-                <th>light value</th>
-                <th>pH</th>
-                <th>PPM</th>
-              </tr>
+              <tbody id="growThTomato"></tbody>
+              <tbody id="growTdTomato"></tbody>
             </table> 
           </div>
 </body>
 <script src="table/fireTableBorlotti.js" type="module"></script>
+<script src="table/fireTableTomato.js" type="module"></script>
 <script src="table/fireTableInfoTh.js"></script>
 <script src="table/fireTableInfoTd.js" type="module"></script>
-<script src="table/selectOnChange.js"></script>
+<script src="action/selectOnChange.js"></script>
 </html>

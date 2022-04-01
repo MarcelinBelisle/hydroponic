@@ -15,6 +15,25 @@
     border-bottom-left-radius: 5px;
   }
 
+  
+  .blockHead button {
+
+  color: white;
+  background-color: #516d7c;  
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0.4% 1%;
+  font-weight: bold;
+  height: 100%;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.5;
+}
+
+
   .blockNav {
     position: fixed;
     width: 4%;
@@ -25,17 +44,50 @@
     left: 0;
   }
 
+  .blockNav img {
+    width: 90%;
+    height: 96%;
+    display: block;
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 
+  .blockNav a {
+  padding: 15% 5%;
+  text-decoration: none;
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  color: white;
+  display: block;
+  margin-top: 30%;
+  }
+
+  .blockNav a:hover {
+    background-color: #516d7c;  
+  }
   .blockMainGraph {
     border-radius: 5px;
     width: 61%;
-    height: 65%;
+    height: 62%;
     border-color:#2b383f;
     background-color: #2b383f;
     margin-left: 4.5%;
     margin-top: 3%;
     position: fixed;
+}
+.blockMainGraph canvas{
+  margin-right: 3%;
+  margin-top: 1%;
+  margin-left: 1%;
+  max-width: 96%;
+  animation-name: example;
+  animation-duration: 2s;
+}
 
+@keyframes example {
+  0%  {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 .blockFirstRight {
@@ -52,18 +104,7 @@
 .blockSecRight {
   position: fixed;
   width: 25%;
-  height: 20%;
-  border-color:#2b383f;
-  background-color: #2b383f;
-  margin-left: 66.5%;
-  margin-top: 14%;
-  border-radius: 5px;
-}
-
-.blockThirdRight {
-  position: fixed;
-  width: 25%;
-  height: 21.5%;
+  height: 18.7%;
   border-color:#2b383f;
   background-color: #2b383f;
   margin-left: 66.5%;
@@ -71,63 +112,65 @@
   border-radius: 5px;
 }
 
+
 .blockBottomLeft {
   position: fixed;
   width: 43%;
-  height: 23%;
+  height: 26.5%;
   border-color:#2b383f;
   background-color: #2b383f;
   margin-left: 4.5%;
-  margin-top: 37%;
+  margin-top: 35.5%;
   border-radius: 5px;
 }
+
+.blockBottomLeft canvas{
+  max-width: 45%;
+  max-height: 95%;
+  position: fixed;
+  margin-right: 3%;
+  margin-top: 1%;
+  margin-left: 1%;
+
+}
+
+
 .blockBottomRight {
   position: fixed;
   width: 43%;
-  height: 23%;
+  height: 26.5%;
   border-color:#2b383f;
   background-color: #2b383f;
   margin-left: 48.5%;
-  margin-top: 37%;
+  margin-top: 35.5%;
   border-radius: 5px;
 }
 
-.textArduino {
-  margin-left: 5%;
-  margin-top: 5%;
-  border-radius: 5px;
-}
-
-canvas{
+ .blockBottomRight canvas{
   margin-right: 3%;
-  margin-top: 3%;
+  margin-top: 1%;
   margin-left: 1%;
   max-width: 96%;
+  max-height: 96%;
   animation-name: example;
   animation-duration: 2s;
 }
-
 
 @keyframes example {
   0%  {opacity: 0;}
   100% {opacity: 1;}
 }
 
-
-button {
-  border-radius: 50%;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 0.6% 1%;
-  font-weight: bold;
+.textArduino {
   margin-left: 5%;
-  margin-top: 0.2%;
+  border-radius: 5px;
 }
 
-button:hover {
-  opacity: 0.5;
+
+
+h1{
+  color: white;
+  margin-left: 15%;
 }
 
 

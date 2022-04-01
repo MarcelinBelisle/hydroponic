@@ -63,17 +63,17 @@ function AddItemToTableInfoTd(nbPlant,cName,latin,seed,sDate,eDate,harvest,statu
     async function GetDocumentInfo() {
         const dbRef = collection(db,"PlantData");
 
-         var refInfo = doc(db,"PlantData", "BorlottiBean");
+         var refInfo = doc(db,"PlantData", "RomaineL");
          const docRef = await setDoc(
            refInfo, {
             NbPlant: "1",
-            CommonName: "Borlotti bean",
-            LatinName: "Phaseolus vulgaris",
-            Seed: "Random field crops in Yamaska",
-            StartDate: "Undefined",
-            EndDate: "03/03/22",
-            Harvest: "0.5",
-            Status: "Finished"
+            CommonName: "Romaine lettuce",
+            LatinName: "Lactuca sativa",
+            Seed: "W.H.Perron",
+            StartDate: "30/03/22",
+            EndDate: "Undefined",
+            Harvest: "0",
+            Status: "Ongoing"
            }
          )
 

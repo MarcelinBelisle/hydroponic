@@ -1,3 +1,85 @@
+
+var rest = 0;
+var dataArray4 = [];
+const ctx4 = document.getElementById('myChartTDSPercent').getContext('2d');
+const myChart4 = new Chart(ctx4, {
+    type: 'doughnut',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'percentage dif',
+            data: dataArray4,
+            backgroundColor: 'rgb(173, 216, 230)',
+            borderWidth: 1,
+            pointStyle: 'circle',
+            pointRadius: 5,
+            pointBackgroundColor: "yellow",
+            pointBorderColor: 'rgb(0, 0, 0)',
+            radius: 95,
+            circumference: [],
+        }]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'yellow',
+          anchor: 'center'
+        }
+      },  
+      }
+});
+
+
+
+var dataArray3 = [];
+const ctx3 = document.getElementById('myChartTDSDif').getContext('2d');
+const myChart3 = new Chart(ctx3, {
+    type: 'bar',
+    data: {
+        labels: ['last val'+ 'aimed val'],
+        datasets: [
+          {
+            label: 'dif',
+            data: dataArray3,
+            fill: true,
+            backgroundColor: 'rgb(173, 216, 230)',
+            borderWidth: 1,
+      pointStyle: 'circle',
+      pointRadius: 5,
+      pointBackgroundColor: "yellow",
+      pointBorderColor: 'rgb(0, 0, 0)',
+        },
+        {
+          label: 'dif2',
+          data: [650],
+          fill: true,
+          backgroundColor: 'rgb(73, 16, 30)',
+          borderWidth: 1,
+    pointStyle: 'circle',
+    pointRadius: 5,
+    pointBackgroundColor: "yellow",
+    pointBorderColor: 'rgb(0, 0, 0)',
+        }
+      ]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+      plugins: {
+        datalabels:{
+          color: 'yellow',
+          anchor: 'center'
+        }
+      },  
+    scales: {
+        y: {
+          beginAtZero: true,
+          }
+        }
+      }
+});
+
+
 var dataArray2 = [];
 const ctx2 = document.getElementById('myChartTDSMean').getContext('2d');
 const myChart2 = new Chart(ctx2, {
@@ -109,6 +191,25 @@ let counter = 0;
         chart2.update();
         }
 
+        function addDataDif(chart3, dataArray3) {
+          chart3.data.datasets.forEach((dataset) => {
+              dataset.data.push(dataArray3);
+          });
+          chart3.update();
+          }
+  
+          function addDataPercent(chart4, label, circumference, dataArray4) {
+            chart4.data.labels.push(label);  
+            chart4.data.datasets.forEach((dataset) => {
+                dataset.data.push(dataArray4);
+                dataset.circumference.push(circumference);
+            });
+            chart4.update();
+            }
+  
+          
+            var percentage = 0;
+
     async function GetTDS() {
     var ref = doc(db,"TDSvalue", "PPM");
     const docSnap = await getDoc(ref);
@@ -121,6 +222,19 @@ let counter = 0;
           total += parseFloat(tds[i]); 
           addData(myChart, tds[i]); 
         }
+        
+        if(tds.slice(-1)[0] < 650){
+          percentage = (tds.slice(-1)[0] * 100)/650;
+          rest = (percentage * 360) /100;
+          addDataPercent(myChart4,'Precision',rest ,percentage);
+      
+          }
+          else {
+            percentage = 100 - (((tds.slice(-1)[0] * 100)/650)-100);
+            rest = (percentage * 360) /100;
+            addDataPercent(myChart4,'Precision5',rest ,percentage);
+          }    
+          addDataDif(myChart3, tds.slice(-1)[0]); 
    
         var half = tds.length / 2;
         if (tds.length % 2 == 0){
@@ -132,8 +246,10 @@ let counter = 0;
           median = Number(tds[half1]) + Number(tds[half2]) / 2.0;
         }
         var avg = total / (tds.length * 1.00);
-        addDataMean(myChart2,'mean', avg); 
-        addDataMean(myChart2, 'median', median); 
+        var avgRound = (Math.round(avg * 100) / 100).toFixed(2);
+        var medianRound = (Math.round(median * 100) / 100).toFixed(2);
+        addDataMean(myChart2,'mean', avgRound); 
+        addDataMean(myChart2, 'median', medianRound); 
      }
 }
 

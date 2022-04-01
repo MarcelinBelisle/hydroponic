@@ -100,9 +100,9 @@ select {
   }
   
   .sidenav a:hover {
-    background-color: #516d7c;
-    
+    background-color: #516d7c;  
   }
+  
   .sidenavIn {
     padding: 2% 10% 10% 10%;
     text-decoration: none;
