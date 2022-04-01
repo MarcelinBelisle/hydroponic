@@ -9,7 +9,7 @@ const myChart4 = new Chart(ctx4, {
         datasets: [{
             label: 'percentage dif',
             data: dataArray4,
-            backgroundColor: 'rgb(173, 216, 230)',
+            backgroundColor: 'rgb(0, 128, 0)',
             borderWidth: 1,
             pointStyle: 'circle',
             pointRadius: 5,
@@ -43,7 +43,7 @@ const myChart3 = new Chart(ctx3, {
             label: 'dif',
             data: dataArray3,
             fill: true,
-            backgroundColor: 'rgb(173, 216, 230)',
+            backgroundColor: 'rgb(0, 128, 0)',
             borderWidth: 1,
       pointStyle: 'circle',
       pointRadius: 5,
@@ -225,14 +225,16 @@ let counter = 0;
         
         if(tds.slice(-1)[0] < 650){
           percentage = (tds.slice(-1)[0] * 100)/650;
+          var percentageRound = (Math.round(percentage * 100) / 100).toFixed(2);
           rest = (percentage * 360) /100;
-          addDataPercent(myChart4,'Precision',rest ,percentage);
+          addDataPercent(myChart4,'Precision',rest ,percentageRound);
       
           }
           else {
-            percentage = 100 - (((tds.slice(-1)[0] * 100)/650)-100);
+            percentage = (650 * 100)/tds.slice(-1)[0];
+            var percentageRound = (Math.round(percentage * 100) / 100).toFixed(2);
             rest = (percentage * 360) /100;
-            addDataPercent(myChart4,'Precision5',rest ,percentage);
+            addDataPercent(myChart4,'Precision',rest ,percentageRound);
           }    
           addDataDif(myChart3, tds.slice(-1)[0]); 
    

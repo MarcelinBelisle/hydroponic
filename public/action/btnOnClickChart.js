@@ -3,11 +3,15 @@
     hideAll();
     document.getElementById("myChartpH").style.display = "block";
     document.getElementById("myChartpHMean").style.display = "block";
+    document.getElementById("myChartpHDif").style.display = "block";
+    document.getElementById("myChartpHPercent").style.display = "block";
 };
 
 var clickSelectionChartTDS = function () {
     document.getElementById("myChartpH").style.display = "none";
     document.getElementById("myChartpHMean").style.display = "none";
+    document.getElementById("myChartpHDif").style.display = "none";
+    document.getElementById("myChartpHPercent").style.display = "none";
     hideAll();
     document.getElementById("myChartTDS").style.display = "block";
     document.getElementById("myChartTDSMean").style.display = "block";
@@ -18,6 +22,8 @@ var clickSelectionChartTDS = function () {
 var clickSelectionChartCO2 = function () {
     document.getElementById("myChartpHMean").style.display = "none";
     document.getElementById("myChartpH").style.display = "none";
+    document.getElementById("myChartpHDif").style.display = "none";
+    document.getElementById("myChartpHPercent").style.display = "none";
     hideAll();
     document.getElementById("myChartCO2").style.display = "block";
     document.getElementById("myChartCO2Mean").style.display = "block";
@@ -28,6 +34,8 @@ var clickSelectionChartCO2 = function () {
 var clickSelectionChartWater = function () {
     document.getElementById("myChartpHMean").style.display = "none";
     document.getElementById("myChartpH").style.display = "none";
+    document.getElementById("myChartpHDif").style.display = "none";
+    document.getElementById("myChartpHPercent").style.display = "none";
     hideAll();
     document.getElementById("myChartWater").style.display = "block";
     document.getElementById("myChartWaterMean").style.display = "block";
@@ -38,6 +46,8 @@ var clickSelectionChartWater = function () {
 var clickSelectionChartHum = function () {
     document.getElementById("myChartpHMean").style.display = "none";
     document.getElementById("myChartpH").style.display = "none";
+    document.getElementById("myChartpHDif").style.display = "none";
+    document.getElementById("myChartpHPercent").style.display = "none";
     hideAll();
     document.getElementById("myChartHum").style.display = "block";
     document.getElementById("myChartHumMean").style.display = "block";
@@ -48,6 +58,8 @@ var clickSelectionChartHum = function () {
 var clickSelectionChartTemp = function () {
     document.getElementById("myChartpHMean").style.display = "none";
     document.getElementById("myChartpH").style.display = "none";
+    document.getElementById("myChartpHDif").style.display = "none";
+    document.getElementById("myChartpHPercent").style.display = "none";
     hideAll();
     document.getElementById("myChartTemp").style.display = "block";
     document.getElementById("myChartTempMean").style.display = "block";

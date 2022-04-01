@@ -227,14 +227,16 @@ let counter = 0;
 
         if(hum.slice(-1)[0] < 48){
         percentage = (hum.slice(-1)[0] * 100)/48;
+        var percentageRound = (Math.round(percentage * 100) / 100).toFixed(2);
         rest = (percentage * 360) /100;
-        addDataPercent(myChart4,'Precision',rest ,percentage);
+        addDataPercent(myChart4,'Precision',rest ,percentageRound);
     
         }
         else {
-          percentage = 100 - (((hum.slice(-1)[0] * 100)/48)-100);
+          percentage = (48 * 100)/hum.slice(-1)[0];
+          var percentageRound = (Math.round(percentage * 100) / 100).toFixed(2);
           rest = (percentage * 360) /100;
-          addDataPercent(myChart4,'Precision',rest ,percentage);
+          addDataPercent(myChart4,'Precision',rest ,percentageRound);
         }    
         addDataDif(myChart3, hum.slice(-1)[0]); 
 

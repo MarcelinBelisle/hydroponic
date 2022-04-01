@@ -9,7 +9,7 @@ const myChart4 = new Chart(ctx4, {
         datasets: [{
             label: 'percentage dif',
             data: dataArray4,
-            backgroundColor: 'rgb(173, 216, 230)',
+            backgroundColor: 'rgb(255, 255, 255)',
             borderWidth: 1,
             pointStyle: 'circle',
             pointRadius: 5,
@@ -23,7 +23,7 @@ const myChart4 = new Chart(ctx4, {
     options: {
       plugins: {
         datalabels:{
-          color: 'yellow',
+          color: 'black',
           anchor: 'center'
         }
       },  
@@ -42,7 +42,7 @@ const myChart3 = new Chart(ctx3, {
             label: 'dif',
             data: dataArray3,
             fill: true,
-            backgroundColor: 'rgb(173, 216, 230)',
+            backgroundColor: 'rgb(255, 255, 255)',
             borderWidth: 1,
       pointStyle: 'circle',
       pointRadius: 5,
@@ -66,7 +66,7 @@ const myChart3 = new Chart(ctx3, {
     options: {
       plugins: {
         datalabels:{
-          color: 'yellow',
+          color: 'black',
           anchor: 'center'
         }
       },  
@@ -102,7 +102,7 @@ const myChart2 = new Chart(ctx2, {
     options: {
       plugins: {
         datalabels:{
-          color: 'yellow',
+          color: 'black',
           anchor: 'center'
         }
       },  
@@ -115,7 +115,6 @@ const myChart2 = new Chart(ctx2, {
 });
 
 Chart.defaults.font.size = 16;
-Chart.defaults.defaultFontColor = 'red';
 var dataArray = [];
 const ctx = document.getElementById('myChartCO2').getContext('2d');
 const myChart = new Chart(ctx, {
@@ -227,14 +226,16 @@ let counter = 0;
         
         if(co2.slice(-1)[0] < 400){
           percentage = (co2.slice(-1)[0] * 100)/400;
+          var percentageRound = (Math.round(percentage * 100) / 100).toFixed(2);
           rest = (percentage * 360) /100;
-          addDataPercent(myChart4,'Precision',rest ,percentage);
+          addDataPercent(myChart4,'Precision',rest ,percentageRound);
       
           }
           else {
-            percentage = 100 - (((co2.slice(-1)[0] * 100)/400)-100);
+            percentage = (400 * 100)/co2.slice(-1)[0];
+            var percentageRound = (Math.round(percentage * 100) / 100).toFixed(2);
             rest = (percentage * 360) /100;
-            addDataPercent(myChart4,'Precision',rest ,percentage);
+            addDataPercent(myChart4,'Precision',rest ,percentageRound);
           }    
           addDataDif(myChart3, co2.slice(-1)[0]); 
    
