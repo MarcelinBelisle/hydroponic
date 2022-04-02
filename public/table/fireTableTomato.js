@@ -63,11 +63,11 @@ function AddItemToTableCompTd(comp,model){
     async function GetDocumentComp() {
         const dbRef = collection(db,"CompTomato");
 
-         var refComp = doc(db,"CompTomato", "Peristaltic");
+         var refComp = doc(db,"CompTomato", "pHdown");
          const docRef = await setDoc(
            refComp, {
-            Component: "Peristaltic pump",
-            Model: "4x 12V INTLLAB 5 ~ 100 ml/min"
+            Component: "pH down",
+            Model: "Root Farm"
            }
          )
 

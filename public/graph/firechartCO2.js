@@ -36,7 +36,7 @@ const ctx3 = document.getElementById('myChartCO2Dif').getContext('2d');
 const myChart3 = new Chart(ctx3, {
     type: 'bar',
     data: {
-        labels: ['last val'+ 'aimed val'],
+        labels: ['last val'+ '              aimed val'],
         datasets: [
           {
             label: 'dif',
@@ -175,8 +175,8 @@ const db = getFirestore();
 var co2;
 let counter = 0;
 
- function addData(chart, label, dataArray) {
-    chart.data.labels.push(label);
+ function addData(chart, dataArray) {
+    chart.data.labels.push(counter);
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(dataArray);
     });
@@ -220,7 +220,7 @@ let counter = 0;
         co2 = docSnap.data().CO2;
         for (let i = 0; i < co2.length; i++) {
           total += parseFloat(co2[i]); 
-          addData(myChart, Date.now(), co2[i]); 
+          addData(myChart, co2[i]); 
         }
         
         if(co2.slice(-1)[0] < 400){
